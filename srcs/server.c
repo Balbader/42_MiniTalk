@@ -33,14 +33,9 @@ void	ft_print_signal(int signum)
 int	main(void)
 {
 	ft_printf("SERVER PID : %d\n", getpid());
-	// signal(SIGUSR1, ft_print_signal);
-	// signal(SIGUSR2, ft_print_signal);
+	signal(SIGUSR1, ft_print_signal);
+	signal(SIGUSR2, ft_print_signal);
 	while (1)
-	{
-		signal(SIGUSR1, ft_print_signal);
-		signal(SIGUSR2, ft_print_signal);
 		pause();
-
-	}
 	return (0);
 }
