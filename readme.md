@@ -8,10 +8,12 @@ You must create a communication program in the form of a client and a server.<br
 • The server must be started first. After its launch, it has to print its PID.<br>
 <br>
 • The client takes two parameters:<br>
-    ◦ The server PID.<br>
-    ◦ The string to send.<br>
-    • The client must send the string passed as a parameter to the server.<br>
-Once the string has been received, the server must print it.<br>
+>◦ The server PID.<br>
+>◦ The string to send.<br>
+<br>
+• The client must send the string passed as a parameter to the server.<br>
+<br>
+• Once the string has been received, the server must print it.<br>
 <br>
 • The server has to display the string pretty quickly. Quickly means that if you think it takes too long, then it is probably too long.<br>
 1 second for displaying 100 characters is way too much!<br>
