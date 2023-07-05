@@ -25,6 +25,7 @@ void			ft_check_signal(int kill_ref);
 void			ft_post_str(char *str, int str_len, int pid);
 
 // server
+void			ft_print_signal(int signum);
 
 // ft_printf
 int				ft_printf(const char *str, ...);
@@ -36,7 +37,8 @@ void			ft_print_char(char c, int *tot_len);
 void			ft_print_str(char *str, int *tot_len);
 
 // utils
-long long int	ft_atoi(const char *str);
 int				ft_strlen(char *str);
+void			ft_putchar(char c);
+long long int	ft_atoi(const char *str);
 
 #endif
