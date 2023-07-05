@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 # TARGET
-NAME				:=	s
+NAME				:=	minitalk
 
 # SRCS FILES
 FT_PRINTF_DIR		:=	ft_printf/
@@ -51,7 +51,8 @@ INC_DIR				:=	./inc/
 SRCS				:=	\
 						$(FT_PRINTF) \
 						$(UTILS) \
-						main.c
+						server.c \
+						client.c
 SRCS				:=	$(SRCS:%=$(SRCS_DIR)/%)
 
 BUILD_DIR			:=	.build
@@ -78,11 +79,7 @@ $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 
 -include $(DEPS)
 
-$(LIBMLX):
-	$(MAKE_LIBMLX)
-
 clean:
-	$(MAKE_LIBMLX) clean
 	$(RM) $(BUILD_DIR) $(DEPS)
 
 fclean:
