@@ -10,11 +10,20 @@
 #                                                                              #
 # **************************************************************************** #
 
-# TARGET
-CLI_TARGET			:=	client
-SERV_TARGET			:=	server
+# NAME
+NAME_C				:=	client
+NAME_S				:=	server
 
 # SRCS FILES
+
+CLIENT_DIR			:=	srcs/
+CLIENT_FILES		:=	client.c
+CLIENT				:=	$(addprefix $(CLIENT_DIR), $(CLIENT_FILES))
+
+SERVER_DIR			:=	srcs/
+SERVER_FILES		:=	server.c
+SERVER				:=	$(addprefix $(SERVER_DIR), $(SERVER_FILES))
+
 FT_PRINTF_DIR		:=	ft_printf/
 FT_PRINTF_FILES		:=	\
 						ft_print_char.c \
@@ -38,10 +47,10 @@ SRCS_DIR			:=	./srcs/
 INC_DIR				:=	./inc/
 
 SRCS				:=	\
+						$(CLIENT) \
+						$(SERVER) \
 						$(FT_PRINTF) \
-						$(UTILS) \
-						client.c \
-						server.c
+						$(UTILS)
 SRCS				:=	$(SRCS:%=$(SRCS_DIR)/%)
 
 BUILD_DIR			:=	.build
@@ -58,13 +67,13 @@ DIR_DUP				=	mkdir -p $(@D)
 
 
 # RECIPES
-all: $(CLI_TARGET) $(SERV_TARGET)
+all: $(NAME_C) $(NAME_S)
 
-$(CLI_TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o client.c
+$(NAME_C): $(OBJS)
+	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) -o $(NAME_C)
 
-$(SERV_TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o server.c
+$(NAME_S): $(OBJS)
+	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) -o $(NAME_S)
 
 $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 	$(DIR_DUP)
@@ -74,11 +83,11 @@ $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 
 clean:
 	$(RM) $(BUILD_DIR) $(DEPS)
-	$(RM) $(CLI_TARGET) $(SERV_TARGET)
+	$(RM) $(OBJS)
 
 fclean:
 	$(MAKE) clean
-	$(RM) $(CLI_TARGET) $(SERV_TARGET)
+	$(RM) $(NAME_C) $(NAME_S)
 
 re:
 	$(MAKE) fclean
