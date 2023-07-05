@@ -35,18 +35,17 @@ You must create a communication program in the form of a client and a server.<br
 • You can have one global variable per program (one for the client and one for the server), but you will have to justify their use.<br>
 <br>
 • You are allowed to use the following functions:<br>
-<br>
-◦ write<br>
-◦ ft_printf and any equivalent YOU coded<br>
-◦ signal<br>
-◦ sigemptyset<br>
-◦ sigaddset<br>
-◦ sigaction<br>
-◦ kill<br>
-◦ getpid<br>
-◦ malloc<br>
-◦ free<br>
-◦ pause<br>
-◦ sleep<br>
-◦ usleep<br>
-◦ exit<br>
+> ◦ write<br>
+> ◦ ft_printf and any equivalent YOU coded<br>
+> ◦ signal<br>
+> ◦ sigemptyset<br>
+> ◦ sigaddset<br>
+> ◦ sigaction<br>
+> ◦ kill<br>
+> ◦ getpid<br>
+> ◦ malloc<br>
+> ◦ free<br>
+> ◦ pause<br>
+> ◦ sleep<br>
+> ◦ usleep<br>
+> ◦ exit<br>
