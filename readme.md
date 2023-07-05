@@ -36,17 +36,17 @@ You must create a communication program in the form of a client and a server.<br
 <br>
 • You are allowed to use the following functions:<br>
 <br>
-    ◦ write<br>
-    ◦ ft_printf and any equivalent YOU coded<br>
-    ◦ signal<br>
-    ◦ sigemptyset<br>
-    ◦ sigaddset<br>
-    ◦ sigaction<br>
-    ◦ kill<br>
-    ◦ getpid<br>
-    ◦ malloc<br>
-    ◦ free<br>
-    ◦ pause<br>
-    ◦ sleep<br>
-    ◦ usleep<br>
-    ◦ exit<br>
+>◦ write<br>
+>◦ ft_printf and any equivalent YOU coded<br>
+>◦ signal<br>
+>◦ sigemptyset<br>
+>◦ sigaddset<br>
+>◦ sigaction<br>
+>◦ kill<br>
+>◦ getpid<br>
+>◦ malloc<br>
+>◦ free<br>
+>◦ pause<br>
+>◦ sleep<br>
+>◦ usleep<br>
+>◦ exit<br>
