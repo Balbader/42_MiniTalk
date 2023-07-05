@@ -15,8 +15,7 @@ You must create a communication program in the form of a client and a server.<br
 <br>
 • Once the string has been received, the server must print it.<br>
 <br>
-• The server has to display the string pretty quickly. Quickly means that if you think it takes too long, then it is probably too long.<br>
-1 second for displaying 100 characters is way too much!<br>
+• The server has to display the string pretty quickly. Quickly means that if you think it takes too long, then it is probably too long. 1 second for displaying 100 characters is way too much!<br>
 <br>
 • Your server should be able to receive strings from several clients in a row without needing to restart.<br>
 <br>
