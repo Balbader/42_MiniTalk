@@ -15,3 +15,14 @@ pid_t fork(void);
 ```
 
 ### Distinguishing Between the Parent and Child Processes
+
+Parents and Child processes can be differentiated based on their `PID : Process IDentifier` and `PPID : Parent Process IDentifier`.
+When created through the `fork` command, the child process will be an exact clone of the parent and is executed simultaneously. Since `Child` is an exact clone of `Parent`, they will both have the same `PID` code.
+The `fork` system call return value allows us to differentiate both processes as it does not return the same `PID` to the `Parent` and to the `Child`.
+If `fork` returns :
++ `0` : This means we are in the `Child` process
++ `int > 0` : An positive integer is simply the `PID` and means that we are in the `Parent` process
++ `-1` : is returned in the event of an error
+
+> NOTE: A `Child` process also inherit the `Parent` instruction pointer (or program counter) which contains the memory address of the current instruction. So if we fork a child in the middle of the execution of the parent process, the child will start at the same instruction at which it was forked and NOT all the way from the beginning of the program.
+
