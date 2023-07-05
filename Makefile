@@ -29,6 +29,7 @@ FT_PRINTF			:=	$(addprefix $(FT_PRINTF_DIR), $(FT_PRINTF_FILES))
 UTILS_DIR			:=	utils/
 UTILS_FILES			:=	\
 						ft_atoi.c \
+						ft_putchar.c \
 						ft_strlen.c
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
@@ -39,8 +40,8 @@ INC_DIR				:=	./inc/
 SRCS				:=	\
 						$(FT_PRINTF) \
 						$(UTILS) \
-						server.c \
-						client.c
+						client.c \
+						server.c
 SRCS				:=	$(SRCS:%=$(SRCS_DIR)/%)
 
 BUILD_DIR			:=	.build
