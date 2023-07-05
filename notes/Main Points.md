@@ -1,3 +1,4 @@
+# Main Points
 1. A program exists on a hard drive; a process exists in RAM
 2. Program : Set of files that contains sets of instructions that are saved on the hard drive in a vegetative state.
 3. Process :  At execution, the system loads the instruction to the RAM and executes them one after the other.
