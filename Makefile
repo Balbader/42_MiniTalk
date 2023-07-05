@@ -11,7 +11,8 @@
 # **************************************************************************** #
 
 # TARGET
-NAME				:=	minitalk
+CLI_TARGET			:=	client
+SERV_TARGET			:=	server
 
 # SRCS FILES
 FT_PRINTF_DIR		:=	ft_printf/
@@ -25,26 +26,12 @@ FT_PRINTF_FILES		:=	\
 						ft_print_unsigned.c
 FT_PRINTF			:=	$(addprefix $(FT_PRINTF_DIR), $(FT_PRINTF_FILES))
 
-
 UTILS_DIR			:=	utils/
 UTILS_FILES			:=	\
-						ft_atoi.c \
- 						ft_is_duplicate.c \
-						ft_isdigit.c \
-						ft_itoa.c \
- 						ft_print_error.c \
-						ft_putchar.c \
-						ft_putstr.c \
-						ft_split.c \
-						ft_strchr.c \
-						ft_strdup.c \
-						ft_strjoin.c \
-						ft_strlen.c \
-						ft_strncpy.c
+						ft_atoi.c
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 # INGREDIENTS
-
 SRCS_DIR			:=	./srcs/
 INC_DIR				:=	./inc/
 
@@ -61,6 +48,7 @@ DEPS        		:=	$(OBJS:.o=.d)
 
 CC					:=	cc
 CFLAGS				:=	-Wall -Wextra -Werror -g3
+IFLAGS				:=	$(addprefix -I, $(INC_DIR))
 
 # USTENSILS
 RM					:=	rm -rf
@@ -68,10 +56,13 @@ DIR_DUP				=	mkdir -p $(@D)
 
 
 # RECIPES
-all: $(NAME)
+all: $(CLI_TARGET) $(SERV_TARGET)
 
-$(NAME): $(LIBMLX) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
+$(CLI_TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o client.c
+
+$(SERV_TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o server.c
 
 $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 	$(DIR_DUP)
@@ -81,10 +72,11 @@ $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 
 clean:
 	$(RM) $(BUILD_DIR) $(DEPS)
+	$(RM) $(CLI_TARGET) $(SERV_TARGET)
 
 fclean:
 	$(MAKE) clean
-	$(RM) $(NAME)
+	$(RM) $(CLI_TARGET) $(SERV_TARGET)
 
 re:
 	$(MAKE) fclean
