@@ -28,7 +28,8 @@ FT_PRINTF			:=	$(addprefix $(FT_PRINTF_DIR), $(FT_PRINTF_FILES))
 
 UTILS_DIR			:=	utils/
 UTILS_FILES			:=	\
-						ft_atoi.c
+						ft_atoi.c \
+						ft_strlen.c
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 # INGREDIENTS
