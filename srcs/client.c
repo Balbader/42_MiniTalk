@@ -30,13 +30,13 @@ void	ft_post_str(char *str, int str_len, int pid)
 	int	j;
 
 	i = -1;
-	while (++i < len)
+	while (++i < str_len)
 	{
 		j = -1;
 		bit_ref = 128;
 		while (++j < 8)
 		{
-			bit = string[i] & bit_ref;
+			bit = str[i] & bit_ref;
 			if (bit == bit_ref)
 				check_kill = kill(pid, SIGUSR2);
 			else
@@ -64,7 +64,7 @@ int	main(int argc, char **argv)
 		}
 		str_len = ft_strlen(argv[2]);
 		str = argv[2];
-		ft_post_string(str, str_len, pid);
+		ft_post_str(str, str_len, pid);
 		return (0);
 	}
 	ft_printf("Error : Wrong Argument Count!\n");
