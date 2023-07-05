@@ -21,8 +21,8 @@
 # include <fcntl.h>
 
 // client
-void	ft_check_signal(int kill_ref);
-void	ft_post_str(char *str, int str_len, int pid);
+void			ft_check_signal(int kill_ref);
+void			ft_post_str(char *str, int str_len, int pid);
 
 // server
 
@@ -34,5 +34,9 @@ void			ft_print_unsigned(unsigned int u, int *tot_len);
 void			ft_print_ptr(size_t ptr, int *tot_len);
 void			ft_print_char(char c, int *tot_len);
 void			ft_print_str(char *str, int *tot_len);
+
+// utils
+long long int	ft_atoi(const char *str);
+int				ft_strlen(char *str);
 
 #endif
