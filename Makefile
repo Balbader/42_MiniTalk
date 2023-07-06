@@ -14,15 +14,15 @@
 NAME_C				:=	client
 NAME_S				:=	server
 
+
 # SRCS FILES
+SERVER_DIR			:=	srcs/
+SERVER_FILES		:=	server.c
+SERVER				:=	$(addprefix $(SERVER_DIR), $(SERVER_FILES))
 
 CLIENT_DIR			:=	srcs/
 CLIENT_FILES		:=	client.c
 CLIENT				:=	$(addprefix $(CLIENT_DIR), $(CLIENT_FILES))
-
-SERVER_DIR			:=	srcs/
-SERVER_FILES		:=	server.c
-SERVER				:=	$(addprefix $(SERVER_DIR), $(SERVER_FILES))
 
 FT_PRINTF_DIR		:=	ft_printf/
 FT_PRINTF_FILES		:=	\
@@ -42,24 +42,24 @@ UTILS_FILES			:=	\
 						ft_strlen.c
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
+
 # INGREDIENTS
 SRCS_DIR			:=	./srcs/
 INC_DIR				:=	./inc/
 
 SRCS				:=	\
-						$(CLIENT) \
-						$(SERVER) \
 						$(FT_PRINTF) \
 						$(UTILS)
 SRCS				:=	$(SRCS:%=$(SRCS_DIR)/%)
 
 BUILD_DIR			:=	.build
-OBJS        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
-DEPS        		:=	$(OBJS:.o=.d)
+OBJS_C        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o) $(CLIENT:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
+OBJS_S        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o) $(SERVER:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 CC					:=	cc
 CFLAGS				:=	-Wall -Wextra -Werror -g3
 IFLAGS				:=	$(addprefix -I, $(INC_DIR))
+
 
 # USTENSILS
 RM					:=	rm -rf
@@ -69,21 +69,18 @@ DIR_DUP				=	mkdir -p $(@D)
 # RECIPES
 all: $(NAME_C) $(NAME_S)
 
-$(NAME_C): $(OBJS)
-	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) -o $(NAME_C)
+$(NAME_C): $(OBJS_C)
+	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS_C) -o $(NAME_C)
 
-$(NAME_S): $(OBJS)
-	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) -o $(NAME_S)
+$(NAME_S): $(OBJS_S)
+	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS_S) -o $(NAME_S)
 
 $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
 
--include $(DEPS)
-
 clean:
-	$(RM) $(BUILD_DIR) $(DEPS)
-	$(RM) $(OBJS)
+	$(RM) $(BUILD_DIR)
 
 fclean:
 	$(MAKE) clean
@@ -92,7 +89,6 @@ fclean:
 re:
 	$(MAKE) fclean
 	$(MAKE) all
-
 
 # SPEC
 .PHONY: all clean fclean re
