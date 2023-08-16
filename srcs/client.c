@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]);
-		if (pid <= 1204)
+		if (pid <= 1024)
 		{
 			ft_printf("Error : Incorrect PID!\n");
 			exit(1);
